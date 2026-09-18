@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ note.title }} · PyCon Africa Notes{% endblock %}
+
+{% block content %}
+
+<article class="note-detail">
+  <div class="note-speaker">{{ note.speaker }}</div>
+  <h1>{{ note.title }}</h1>
+  <p style="white-space: pre-wrap; line-height: 1.7; color: var(--py-muted);">{{ note.body }}</p>
+  <div class="hero-actions" style="margin-top: 1.5rem;">
+    <a class="btn-py btn-teal" href="{{ url_for('notes') }}">Back to notes</a>
+    <a class="btn-py btn-amber" href="{{ url_for('index') }}#capture">Add another</a>
+  </div>
+</article>
+
+{% endblock %}

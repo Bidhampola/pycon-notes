@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Home · PyCon Africa Notes{% endblock %}
+
+{% block content %}
+
+<section class="hero" aria-label="PyCon Africa Notes hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <h1 class="hero-brand">PyCon Africa Notes</h1>
+    <p class="hero-subtitle">Code, Community, and Opportunity</p>
+    <p class="hero-lead">
+      A simple Flask learning app to capture speaker talks, titles, and takeaways —
+      styled after the energy of PyCon Africa 2026 in Kampala.
+    </p>
+    <div class="hero-meta">
+      <span><span class="dot" aria-hidden="true"></span> Wed 07 – Sun 11 October 2026</span>
+      <span><span class="dot" aria-hidden="true"></span> Speke Resort Munyonyo, Kampala</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn-py btn-amber" href="#capture">Take a note</a>
+      <a class="btn-py btn-blue" href="{{ url_for('notes') }}">View notes</a>
+      <a class="btn-py btn-teal" href="https://africa.pycon.org/" target="_blank" rel="noopener noreferrer">PyCon Africa</a>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-band">
+  <p>Python powering African innovation — practice by logging what you learn.</p>
+</div>
+
+<section class="section" id="capture">
+  <span class="section-kicker">User Login</span>
+  <h2 class="section-title">Take notes for PyCon 2026</h2>
+  
+  <div class="note-panel">
+    <form action="{{ url_for('login') }}" method="post">
+       
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="e.g. jdoe@example.com" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter a strong password" required>
+      </div>
+      <button type="submit" class="btn-py btn-green">Login</button>
+    </form>
+  </div>
+  
+   
+</section>
+
+
+
+<section class="section">
+  <span class="section-kicker">Community vibe</span>
+  <h2 class="section-title">Why this layout?</h2>
+  <p class="section-lead">
+    PyCon Africa leads with brand, a clear call to action, and one job per section.
+    We borrowed that structure so the learning app feels conference-ready without extra clutter.
+  </p>
+  <div class="hero-actions">
+    <a class="btn-py btn-blue" href="{{ url_for('notes') }}">Browse saved notes</a>
+    <a class="btn-py btn-amber" href="#capture">Add another note</a>
+  </div>
+</section>
+
+{% endblock %}

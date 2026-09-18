@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Notes · PyCon Africa Notes{% endblock %}
+
+{% block content %}
+
+<header class="page-header">
+  <span class="section-kicker">Your archive</span>
+  <h1 class="section-title">List of notes</h1>
+  <p class="section-lead">
+    Every talk note you saved from the home form. Open one to review the full write-up.
+  </p>
+  <a class="btn-py btn-amber" href="{{ url_for('index') }}#capture">Add a note</a>
+</header>
+
+{% if data %}
+  <div class="notes-grid">
+    {% for note in data %}
+      <article class="note-item">
+        <div class="note-speaker">{{ note.speaker }}</div>
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.body[:180] }}{% if note.body|length > 180 %}…{% endif %}</p>
+        <a class="btn-py btn-blue" href="{{ url_for('view_note', id=note.id) }}">Read more</a>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="empty-state">
+    <h2 class="section-title" style="font-size: 1.4rem;">No notes yet</h2>
+    <p class="section-lead" style="margin-inline: auto;">Capture your first talk takeaway on the home page.</p>
+    <a class="btn-py btn-green" href="{{ url_for('index') }}#capture">Take a note</a>
+  </div>
+{% endif %}
+
+{% endblock %}
